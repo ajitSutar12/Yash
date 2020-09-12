@@ -66,6 +66,16 @@
             padding: 0;
             height: 25px !important;
         }
+        .detach{
+            border: 1px solid #c4bfbf !important;
+            padding: 0 5px 0 5px;
+        }
+        .fwidth{
+            width:100%;
+        }
+        .ftd{
+            width: 30%;
+        }
     </style>
 </head>
 <!-- Menu horizontal static layout -->
@@ -246,7 +256,7 @@
                                                                 <div class="col-sm-6">
                                                                     <div class="form-group form-primary">
                                                                         To,
-                                                                        <select class="form-control" name="name">
+                                                                        <select class="form-control detach" name="name">
                                                                         <?php 
                                                                                 //get Customer Details 
                                                                                 $getCustomerDetails  = mysqli_query($con,"select * from customer_master where id = $cust_id");
@@ -268,14 +278,14 @@
                                                                 <div class="col-sm-3">
                                                                     <div class="form-group form-primary">
                                                                         Challan ID :
-                                                                        <input type="text" name="challanID" value="<?php echo $challan_id?>" readonly class="form-control" required>
+                                                                        <input type="text" name="challanID" value="<?php echo $challan_id?>" readonly class="form-control detach" required>
                                                                         <span class="form-bar"></span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <div class="form-group form-primary">
                                                                         Date :
-                                                                        <input type="date" name="date" value="<?php echo $challan_date?>" class="form-control" required="">
+                                                                        <input type="date" name="date" value="<?php echo $challan_date?>" class="form-control detach" required="">
                                                                         <span class="form-bar"></span>
                                                                     </div>
                                                                 </div>
@@ -285,7 +295,7 @@
                                                             <div class="col-md-12">
                                                                 <div class="form-group form-primary">
                                                                     Respected Sir,
-                                                                    <textarea class="form-control" name="matter" row="5"><?php echo $matter?></textarea>
+                                                                    <textarea class="form-control detach" name="matter" row="5" style="height: 50px !important;"><?php echo $matter?></textarea>
                                                                     <span class="form-bar"></span>
                                                                 </div>
                                                             </div>
@@ -364,32 +374,65 @@
                                                                             <tr>
                                                                                 <td class="table_td" style="color:black; border-color:black;width: 58%" colspan="4"> 
                                                                                     Terms Conditions : <br>
-                                                                                    1) Delivery : - <span><input type="text" style="width: 60%;" value="<?php echo $delivery?>" name="condition1"></span>
+                                                                                    <table class="fwidth">
+                                                                                        <tr>
+                                                                                            <td class="ftd">1) Delivery : - </td>
+                                                                                            <td><input type="text" class="fwidth" value="<?php echo $delivery?>" name="condition1"></td>
+                                                                                        </tr>
+                                                                                    </table>
                                                                                 </td>
                                                                                 <td class="table_td" style="color:black; border-color:black;text-align: left;" colspan="2">Taxable Amount</td>
                                                                                 <td class="table_td" style="color:black; border-color:black"><input type="text" name="totalAmount" class="form-control" id="totalAmt" value="<?php echo $totalAmt?>"></td>
                                                                             </tr>
 
                                                                             <tr>
-                                                                                <td class="table_td" style="color:black; border-color:black;" colspan="4"> <span>2) Guranty :-</span><span><input type="text" style="width: 60%;" value="<?php echo $gurrenty?>" name="condition2"></td>
+                                                                                <td class="table_td" style="color:black; border-color:black;" colspan="4"> 
+                                                                                    <table class="fwidth">
+                                                                                        <tr>
+                                                                                            <td class="ftd">2) Guranty : - </td>
+                                                                                            <td><input type="text" class="fwidth" value="<?php echo $gurrenty?>" name="condition2"></td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
                                                                                 <td class="table_td" style="color:black; border-color:black;text-align: left;" colspan="2">SGST 9% Rs.</td>
                                                                                 <td class="table_td" style="color:black; border-color:black"><input type="text" name="sgst" class="form-control" id="sgst" value="<?php echo $sgst?>"></td>
                                                                             </tr>
 
                                                                             <tr>
-                                                                                <td class="table_td" style="color:black; border-color:black;" colspan="4">3) Transport :-<input type="text" value="<?php echo $transport?>" style="width: 60%;" name="condition3"></td>
+                                                                                <td class="table_td" style="color:black; border-color:black;" colspan="4">
+                                                                                    <table class="fwidth">
+                                                                                        <tr>
+                                                                                            <td class="ftd">3) Transport : - </td>
+                                                                                            <td><input type="text" class="fwidth" value="<?php echo $transport?>" name="condition3"></td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
                                                                                 <td class="table_td" style="color:black; border-color:black;text-align: left;" colspan="2">CGST 9% Rs.</td>
                                                                                 <td class="table_td" style="color:black; border-color:black"><input type="text" name="cgst" class="form-control" value="<?php echo $cgst?>" id="cgst"></td>
                                                                             </tr>
 
                                                                             <tr>
-                                                                                <td class="table_td" style="color:black; border-color:black;" colspan="4">4) Payment :-<input type="text" value="<?php echo $payment?>" style="width: 60%;" name="condition4"></td>
+                                                                                <td class="table_td" style="color:black; border-color:black;" colspan="4">
+                                                                                    <table class="fwidth">
+                                                                                        <tr>
+                                                                                            <td class="ftd">4) Payment : - </td>
+                                                                                            <td><input type="text" class="fwidth" value="<?php echo $payment?>" name="condition4"></td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
                                                                                 <td class="table_td" style="color:black; border-color:black;text-align: left;" colspan="2">IGST 18% Rs.</td>
                                                                                 <td class="table_td" style="color:black; border-color:black"><input type="text" name="igst" class="form-control" value="<?php echo $igst?>" id="igst"></td>
                                                                             </tr>
 
                                                                             <tr>
-                                                                                <td class="table_td" style="color:black; border-color:black;" colspan="4">5) Tax :-<input type="text" value="<?php echo $tax?>" style="width: 60%;" name="condtion5"></td>
+                                                                                <td class="table_td" style="color:black; border-color:black;" colspan="4">
+                                                                                    <table class="fwidth">
+                                                                                        <tr>
+                                                                                            <td class="ftd">5) Tax : - </td>
+                                                                                            <td><input type="text" class="fwidth" value="<?php echo $tax?>" name="condition5"></td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
                                                                                 <td class="table_td" style="color:black; border-color:black;text-align: left;" colspan="2">Grand Total: </td>
                                                                                 <td class="table_td" style="color:black; border-color:black"><input type="text" name="GrandTotal" value="<?php echo $grand?>" class="form-control" id="GrandTotal"></td>
                                                                             </tr>
