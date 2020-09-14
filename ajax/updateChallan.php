@@ -15,7 +15,7 @@
     $condition2   = $_POST['condition2'];
     $condition3   = $_POST['condition3'];
     $condition4   = $_POST['condition4'];
-    $condtion5    = $_POST['condtion5'];
+    $condtion5    = $_POST['condition5'];
     // print_r($id);
     // print_r($material);
  

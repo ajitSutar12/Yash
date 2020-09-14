@@ -13,7 +13,7 @@
     $condition2   = $_POST['condition2'];
     $condition3   = $_POST['condition3'];
     $condition4   = $_POST['condition4'];
-    $condtion5    = $_POST['condtion5'];    
+    $condtion5    = $_POST['condition5'];    
 
     foreach($material as $key => $value)
     {
