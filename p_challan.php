@@ -224,122 +224,124 @@ $pdf->SetFont('helvetica', '', 10);
 
 $tbl = '
 <table border="1" cellpadding="1" height="100%">
-<tr style="background-color:#DFDFDF;color:#0000FF;">
-    <td colspan="3"><h1 style="color:black; text-align: center;">CHALLAN DETAILS</h1>
-    </td>
-</tr>
-<tr>
-    <td  colspan="2" width="50%">
-        <table>
-            <tr>
-                <td><b>To : '.$custName.'</b>  </td>
-            </tr>
-            <tr>
-                <td  colspan="2" style = "text-align: left; color:black;"> </td>
-            </tr>
-        </table>    
-    </td>
+    <tr style="background-color:#DFDFDF;color:#0000FF;">
+        <td colspan="3"><h1 style="color:black; text-align: center;">CHALLAN DETAILS</h1>
+        </td>
+    </tr>
 
-    <td width="50%"> 
-        <table>
-            <tr>
-                <td style="width:36%"><b>Challan Id</b></td> <td style="width:4%"> : </td> <td style="width:60%"> '.$invoiceID.'</td>
-            </tr>
-            <tr>
-                <td><b>Challan Date</b></td> <td> : </td> <td>'.$challan_date.' </td>
-            </tr>
-        </table>
-    </td>
-</tr>
-
-<tr>
-    <td colspan="3"> Respected Sir,
-            <p>'.$matter.'</p>
-    </td>
-</tr>
-
-<tr >
-    <td colspan="4"  height="200%">
-        <table border="1" cellpadding="3">
-            <thead>
+    <tr>
+        <td  colspan="2" width="50%">
+            <table>
                 <tr>
-                    <th style="width:5%"><h4 style="text-align:center; color: black;">Sr. No.</h4></th>
-                    <th style="width:44%"><h4 style="text-align:center; color: black;">Description Of Goods/Service</h4></th>
-                    <th style="width:10%"><h4 style="text-align:center; color: black;">Qty</h4></th>
-                    <th style="width:10%"><h4 style="text-align:center; color: black;">Rate/Each</h4></th>
-                    <th style="width:10%"><h4 style="text-align:center; color: black;">Amount</h4></th>
+                    <td><b>To : '.$custName.'</b>  </td>
                 </tr>
+                <tr>
+                    <td  colspan="2" style = "text-align: left; color:black;"> </td>
+                </tr>
+            </table>    
+        </td>
+
+        <td width="50%"> 
+            <table>
+                <tr>
+                    <td style="width:36%"><b>Challan Id</b></td> <td style="width:4%"> : </td> <td style="width:60%"> '.$invoiceID.'</td>
+                </tr>
+                <tr>
+                    <td><b>Challan Date</b></td> <td> : </td> <td>'.$challan_date.' </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="3">&nbsp;&nbsp;Respected Sir,
+                <p>&nbsp;&nbsp;'.$matter.'</p>
+                <p>&nbsp;</p>
+        </td>
+    </tr>
+
+    <tr >
+        <td colspan="3"  height="200%" >
+            <table border="1" cellpadding="3" style="width:100%" > 
+                <thead>
+                    <tr>
+                        <th style="width:5%"><h4 style="text-align:center; color: black;">No.</h4></th>
+                        <th style="width:58%"><h4 style="text-align:center; color: black;">Description Of Goods/Service</h4></th>
+                        <th style="width:12%"><h4 style="text-align:center; color: black;">Qty</h4></th>
+                        <th style="width:12%"><h4 style="text-align:center; color: black;">Rate/Each</h4></th>
+                        <th style="width:12%"><h4 style="text-align:center; color: black;">Amount</h4></th>
+                    </tr>
+                    
+                </thead>
+                <tbody>';
+                $totalAmount = 0;
+                $cgst        = 0;
+                $sgst        = 0;
+                $igst        = 0;
+                $grandTotal  = 0;
+                $count       = 1;
+                $getMaterialDetail = mysqli_query($con,"SELECT *,m.name as mname,m.hsn as mhsn,m.unit as munit,i.rate as irate FROM `challan_master` as i INNER JOIN customer_master as c on c.id = i.cust_id INNER JOIN material_master as m on m.id = i.material_id where i.challan_id = $invoiceID");
+                while($row1 = mysqli_fetch_assoc($getMaterialDetail))
+                {
+                    $qty         = 
+                    $totalAmount = round($totalAmount) + round($row1['qty']*$row1['irate']);
+                    $cgst        = ($totalAmount * 9)/100;
+                    $sgst        = $cgst;
+                    $igst        = $cgst + $sgst;
+                    $grandTotal  = $igst + $totalAmount;
+
+                $tbl.=' <tr>
+                            <td style="text-align:center">'.$count.'</td>
+                            <td>'.$row1['mname'].'<br>Note : '.$row1['material_note'].'</td>
+                            <td style="text-align:right">'.$row1['qty'].'</td>
+                            <td style="text-align:right">'.$row1['irate'].'</td>
+                            <td style="text-align:right">'.$amt = moneyFormatIndia( round($row1['qty']*$row1['irate']) ).'</td>
+                        </tr>';
+                        $count ++;
+                }  
+                    
+            
+                $tbl.='<tr>
+                        <td colspan="2"><b>1) Delivery : - </b> '.$delivery.' </td>
+                        <td colspan="2"><b> Taxable Amt</b>:</td>
+                        <td style="text-align:right">'.$totalAmount = moneyFormatIndia( round($totalAmount) ).'</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><b>2) Guranty : - </b> '.$gurrenty.' </td>
+                        <td colspan="2"><b> SGST @ 9%</b></td>
+                        <td style="text-align:right">'.$sgst = moneyFormatIndia( round($sgst) ).'</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><b>3) Transport : - </b> '.$transport.' </td>
+                        <td colspan="2"><b> CGST @ 9%</b></td>
+                        <td style="text-align:right">'.$cgst = moneyFormatIndia( round($cgst) ).'</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><b>4) Payment  : - </b> '.$payment.' </td>
+                        <td colspan="2"><b> IGST @ 18%</b></td>
+                        <td style="text-align:right">'.$igst = moneyFormatIndia( round($igst) ).'</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><b>5) Tax : - </b> '.$tax.' </td>
+                        <td colspan="2"><b> Grand Total</b></td>
+                        <td style="text-align:right">'.$grandTotal = moneyFormatIndia( round($grandTotal) ).'</td>
+                    </tr>
+                    
                 
-            </thead>
-            <tbody>';
-            $totalAmount = 0;
-            $cgst        = 0;
-            $sgst        = 0;
-            $igst        = 0;
-            $grandTotal  = 0;
-            $count       = 1;
-            $getMaterialDetail = mysqli_query($con,"SELECT *,m.name as mname,m.hsn as mhsn,m.unit as munit,i.rate as irate FROM `challan_master` as i INNER JOIN customer_master as c on c.id = i.cust_id INNER JOIN material_master as m on m.id = i.material_id where i.challan_id = $invoiceID");
-            while($row1 = mysqli_fetch_assoc($getMaterialDetail))
-            {
-                $qty         = 
-                $totalAmount = round($totalAmount) + round($row1['qty']*$row1['irate']);
-                $cgst        = ($totalAmount * 9)/100;
-                $sgst        = $cgst;
-                $igst        = $cgst + $sgst;
-                $grandTotal  = $igst + $totalAmount;
+                </tbody>
+            </table>
+        </td>
+    </tr>
 
-            $tbl.=' <tr>
-                    <td style="text-align:center">'.$count.'</td>
-                    <td>'.$row1['mname'].'<br>Note : '.$row1['material_note'].'</td>
-                    <td style="text-align:right">'.$row1['qty'].'</td>
-                    <td style="text-align:right">'.$row1['irate'].'</td>
-                    <td style="text-align:right">'.$amt = moneyFormatIndia( round($row1['qty']*$row1['irate']) ).'</td>
-                </tr>';
-                $count ++;
-            }  
-                
-         
-            $tbl.='<tr>
-                    <td colspan="2"><b>1) Delivery : - </b> '.$delivery.' </td>
-                    <td colspan="2"><b>Taxable Amt</b>:</td>
-                    <td style="text-align:right">'.$totalAmount = moneyFormatIndia( round($totalAmount) ).'</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><b>2) Guranty : - </b> '.$gurrenty.' </td>
-                    <td colspan="2"><b>SGST @ 9%</b></td>
-                    <td style="text-align:right">'.$sgst = moneyFormatIndia( round($sgst) ).'</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><b>3) Transport : - </b> '.$transport.' </td>
-                    <td colspan="2"><b>CGST @ 9%</b></td>
-                    <td style="text-align:right">'.$cgst = moneyFormatIndia( round($cgst) ).'</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><b>4) Payment  : - </b> '.$payment.' </td>
-                    <td colspan="2"><b>IGST @ 18%</b></td>
-                    <td style="text-align:right">'.$igst = moneyFormatIndia( round($igst) ).'</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><b>5) Tax : - </b> '.$tax.' </td>
-                    <td colspan="2"><b>Grand Total</b></td>
-                    <td style="text-align:right">'.$grandTotal = moneyFormatIndia( round($grandTotal) ).'</td>
-                </tr>
-                
-               
-            </tbody>
-        </table>
-    </td>
-</tr>
-
-<tr>
-    <td colspan="4">
-        <h4 style="text-align:left; color:black">  Certified that the perticulars given above are true and correct.</h4> 
-        <p> <table border="1" width="50%"> <tr> <td> <br/><br/><br/><br/><br/> </td> </tr> <tr> <td style="text-align:center;"> <b>Receivers Signature / Stamp</b> </td> </tr> </table></p>
-      
-        <h4 style="text-align:right; color:black;font-size:15px"><b>For Yash Enterprises  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>   </h4> 
-        <h4 style="text-align:left; color:black"> E.N.O.E.   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Subject to Kolhapur Jurisdiction</h4> 
-    </td>
-</tr>
+    <tr>
+        <td colspan="3">
+            <h4 style="text-align:left; color:black">  Certified that the perticulars given above are true and correct.</h4> 
+            <p> </p>
+            <p> </p>
+            <h4 style="text-align:right; color:black;font-size:15px"><b>For Yash Enterprises  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>   </h4> 
+            <h4 style="text-align:left; color:black"> E.N.O.E.   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Subject to Kolhapur Jurisdiction</h4> 
+        </td>
+    </tr>
 
 </table>';
 
@@ -351,5 +353,5 @@ ob_end_clean();
 $pdf->Output('example_002.pdf', 'I');
 
 //============================================================+
-// END OF FILE
+// END OF FILE Digvijay Jadhav
 //============================================================+
