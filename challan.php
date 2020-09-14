@@ -662,7 +662,7 @@
                     if(result.result == 'success')
                     {
                         swal("Save!", "Challan Generate Successfully", "success");
-                        setInterval(function(){ window.location.href = "viewInvoice.php";
+                        setInterval(function(){ window.location.href = "viewChallan.php";
                         }, 3000);
                     }
                 }
