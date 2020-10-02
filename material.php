@@ -37,6 +37,14 @@
     <link rel="stylesheet" type="text/css" href="./files/assets/css/common.css">
     <link rel="stylesheet" type="text/css" href="./js/select2/dist/css/select2.min.css">
 
+    <style>
+        .select2-container--default .select2-selection--single {
+            background-color : #fff !important ;
+            border: 0px !important ;
+            border-radius: 0px !important;
+        }
+    </style>
+
 </head>
 <!-- Menu horizontal static layout -->
 
@@ -210,9 +218,9 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <div class="form-group form-primary">
+                                                                    <!-- <div class="form-group"> -->
                                                                         Select Unit
-                                                                        <select class="form-control" name="unit" id="unit">
+                                                                        <select name="unit" id="unit">
                                                                             <option value="">Select Unit</option>
                                                                             <option value="NOS">NOS</option>
                                                                             <option value="KG">KG</option>
@@ -222,7 +230,7 @@
                                                                         </select>
                                                                         <!-- <span class="form-bar"></span>
                                                                         <label class="float-label">Unit</label> -->
-                                                                    </div>
+                                                                    <!-- </div> -->
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                     <div class="form-group form-primary">
@@ -382,10 +390,10 @@
                 }
             })
         });
-        // $('select').select2({
-        //     placeholder: 'Select Unit',
-        //     allowClear: true
-        // });
+        $('select').select2({
+            placeholder: 'Select Unit',
+            allowClear: true
+        });
 </script>
 </body>
 

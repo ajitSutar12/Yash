@@ -208,14 +208,14 @@
                                     <div class="card-block">
                                         <div class="row align-items-center">
                                             <div class="col-12 text-center">
-                                            <a href="#" style="font-size: 20px;color:#fff"><i class="fa fa-book f-60 text-c-green"  style="color:darkcyan !important;"></i></a>
+                                            <a href="comingSoon.html" style="font-size: 20px;color:#fff"><i class="fa fa-book f-60 text-c-green"  style="color:darkcyan !important;"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-footer bg-c-green" style="background:darkcyan !important;">
                                         <div class="row align-items-center">
                                             <div class="col-12" style="text-align: center;">
-                                                <p class="text-white m-b-0" style="font-size: 20px;"><a href="#" style="font-size: 20px;color:#fff">KHATA BOOK</a></p>
+                                                <p class="text-white m-b-0" style="font-size: 20px;"><a href="comingSoon.html" style="font-size: 20px;color:#fff">KHATA BOOK</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -229,14 +229,14 @@
                                     <div class="card-block">
                                         <div class="row align-items-center">
                                             <div class="col-12 text-center">
-                                            <a href="#" style="font-size: 20px;color:#fff"><i class="fa fa-cogs f-60 text-c-red" style="color:slategrey !important;"></i></a>
+                                            <a href="comingSoon.html" style="font-size: 20px;color:#fff"><i class="fa fa-cogs f-60 text-c-red" style="color:slategrey !important;"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-footer bg-c-red" style="background:slategrey !important;">
                                         <div class="row align-items-center" >
                                             <div class="col-12" style="text-align: center;">
-                                                <p class="text-white m-b-0" style="font-size: 20px;"><a href="#"style="font-size: 20px;color:#fff">REPORT<a></p>
+                                                <p class="text-white m-b-0" style="font-size: 20px;"><a href="comingSoon.html"style="font-size: 20px;color:#fff">REPORT<a></p>
                                             </div>
                                         </div>
                                     </div>

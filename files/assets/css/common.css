@@ -535,6 +535,16 @@ table.dataTable.nowrap td {
 }
 
 
+.select2-container--default .select2-selection--single {
+    background-color : #fff !important ;
+    border: 0px !important ;
+    border-radius: 0px !important;
+}
+.select2-container {
+    vertical-align: baseline !important;
+}
+
+
 /*     
     .ti-fullscreen{
         font-size: 14px !important; 

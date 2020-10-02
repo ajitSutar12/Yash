@@ -256,7 +256,7 @@
                                                                 <div class="col-sm-6">
                                                                     <div class="form-group form-primary">
                                                                         To,
-                                                                        <select class="form-control detach" name="name">
+                                                                        <select class="js-example-basic-single detach" name="name">
                                                                         <?php 
                                                                                 //get Customer Details 
                                                                                 $getCustomerDetails  = mysqli_query($con,"select * from customer_master where id = $cust_id");
@@ -588,6 +588,9 @@
 <script src="./js/select2/dist/js/select2.min.js"></script>
 
 <script>    
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
         
         //submit Data
         $('#addCustomer').submit(function (e) {
@@ -634,8 +637,9 @@
         //Add Row to Table
         $('#addRow').click(function(){
             debugger
-        $('#myTable tr:last').after('<tr><td><i class="ti-close" style="color:red" id="DeleteButton1" ></i><input type="hidden" name="id[]" value="0"></td><td class="table_td" style="color:black; border-color:black;text-align: center;">'+count+'</td><td class="table_td" style="color:black; border-color:black;text-align: left;"><select class="form-control" name="material[]" id="material_'+count+'" onChange="getMaterialDetials(this,'+count+')"><option value="">select Material Name</option><?php $getMaterialDetails=mysqli_query($con,"select * from material_master");while($row1 = mysqli_fetch_assoc($getMaterialDetails)){?><option value="<?php echo $row1['id']?>"><?php echo $row1['name']?></option><?php }?></select><span><textarea class="from-control" name="materialNote[]" style="width: 100%;"></textarea></span></td><td class="table_td" style="color:black; border-color:black"><input type="text" name="qty[]" id="qty_'+count+'" class="form-control" onkeyup="checkAmt1('+count+')"></td><td class="table_td" style="color:black; border-color:black;text-align:right"><input type="text" name="rate[]" id="rate_'+count+'" class="form-control" onkeyup="checkAmt2('+count+')"></td><td class="table_td" style="color:black; border-color:black;text-align:right"><input type="text" name="amt[]" id="Amt_'+count+'" class="form-control amount"></td></tr>');
+        $('#myTable tr:last').after('<tr><td><i class="ti-close" style="color:red" id="DeleteButton1" ></i><input type="hidden" name="id[]" value="0"></td><td class="table_td" style="color:black; border-color:black;text-align: center;">'+count+'</td><td class="table_td" style="color:black; border-color:black;text-align: left;"><select class="js-example-basic-single" name="material[]" id="material_'+count+'" onChange="getMaterialDetials(this,'+count+')"><option value="">select Material Name</option><?php $getMaterialDetails=mysqli_query($con,"select * from material_master");while($row1 = mysqli_fetch_assoc($getMaterialDetails)){?><option value="<?php echo $row1['id']?>"><?php echo $row1['name']?></option><?php }?></select><br><span><textarea class="from-control" name="materialNote[]" style="width: 100%;"></textarea></span></td><td class="table_td" style="color:black; border-color:black"><input type="text" name="qty[]" id="qty_'+count+'" class="form-control" onkeyup="checkAmt1('+count+')"></td><td class="table_td" style="color:black; border-color:black;text-align:right"><input type="text" name="rate[]" id="rate_'+count+'" class="form-control" onkeyup="checkAmt2('+count+')"></td><td class="table_td" style="color:black; border-color:black;text-align:right"><input type="text" name="amt[]" id="Amt_'+count+'" class="form-control amount"></td></tr>');
             count++;
+            $('.js-example-basic-single').select2();
 
         })
 
