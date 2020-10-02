@@ -6,7 +6,7 @@
 <html lang="en">
 
 <head>
-    <title>View Invoice</title>
+    <title>View Challan</title>
     <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 10]>
@@ -137,7 +137,7 @@
                       </ul>
                       <ul class="nav-right">
                             <li style="margin-top:3px;">
-                                <span><a href="#"> <i class="fa fa-home"></i> View Invoice</a></span>
+                                <span><a href="#"> <i class="fa fa-home"></i> View Challan</a></span>
                             </li> 
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
@@ -199,7 +199,7 @@
                                                 <!-- Zero config.table start -->
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h5>Customer Details</h5>
+                                                        <h5>Challan Details</h5>
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="dt-responsive table-responsive">

@@ -66,6 +66,10 @@
         .ftd{
             width: 30%;
         }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #444;
+            line-height: 16px !important;
+        }
     </style>
 </head>
 <!-- Menu horizontal static layout -->
@@ -157,7 +161,7 @@
                       </ul>
                       <ul class="nav-right">
                             <li style="margin-top:3px;">
-                                <span><a href="#"> <i class="fa fa-home"></i> Generate Invoice</a></span>
+                                <span><a href="#"> <i class="fa fa-home"></i> Generate Challan</a></span>
                             </li> 
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
@@ -215,7 +219,7 @@
                                                 <div class="col-sm-12">
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h5>Invoice Generate</h5>
+                                                        <h5>Challan Generate</h5>
                                                         <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
                                                     </div>
                                                     <div class="card-block">

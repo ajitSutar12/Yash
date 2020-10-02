@@ -56,6 +56,10 @@
             padding: 0;
             height: 25px !important;
         }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #444;
+            line-height: 16px !important;
+        }
     </style>
 </head>
 <!-- Menu horizontal static layout -->
